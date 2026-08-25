@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeloniX Uzb Master Type</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Top Navbar -->
+        <header class="navbar">
+            <div class="brand">
+                <span class="logo-icon">⚡</span>
+                <div class="brand-info">
+                    <h1>VeloniX</h1>
+                    <span class="tag">UZB MASTER TYPE</span>
+                </div>
+            </div>
+
+            <div class="nav-controls">
+                <div class="pill-group" id="mode-selector">
+                    <button class="pill-btn active" data-mode="words">so'zlar</button>
+                    <button class="pill-btn" data-mode="numbers">sonlar</button>
+                    <button class="pill-btn" data-mode="punct">belgilar</button>
+                </div>
+                <div class="pill-group" id="time-selector">
+                    <button class="pill-btn" data-time="15">15s</button>
+                    <button class="pill-btn active" data-time="30">30s</button>
+                    <button class="pill-btn" data-time="60">60s</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Live Metrics Bar -->
+        <div class="live-metrics">
+            <div class="metric-card">
+                <span class="metric-label">VAQT</span>
+                <span class="metric-val" id="timer-display">30</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-label">JONLI WPM</span>
+                <span class="metric-val accent-text" id="live-wpm">0</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-label">ANIQLIK</span>
+                <span class="metric-val" id="live-acc">100%</span>
+            </div>
+        </div>
+
+        <!-- Main Typing Viewport -->
+        <main class="typing-viewport" id="typing-area">
+            <input type="text" id="hidden-input" autocomplete="off" autofocus />
+            <div id="words-wrapper">
+                <div id="smooth-caret"></div>
+            </div>
+            
+            <div id="focus-overlay" class="hidden">
+                <div class="focus-msg">Kiritishni davom ettirish uchun bosing</div>
+            </div>
+        </main>
+
+        <!-- Footer Control & Report Link -->
+        <footer class="footer-bar">
+            <button id="quick-restart-btn">
+                <span>↺</span> Qaytadan boshlash
+            </button>
+            <button id="open-report-btn" class="report-link">
+                <span>⚠️</span> Xatolik haqida xabar berish
+            </button>
+        </footer>
+
+        <!-- End Result Modal -->
+        <div id="result-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h2>Natija</h2>
+                    <span class="status-badge" id="res-status">PRO LEVEL</span>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-box highlight">
+                        <span class="stat-label">WPM (Tezlik)</span>
+                        <span class="stat-val accent-text" id="res-wpm">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Aniqlik</span>
+                        <span class="stat-val" id="res-acc">0%</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">To'g'ri belgilar</span>
+                        <span class="stat-val green" id="res-correct">0</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Xatolar</span>
+                        <span class="stat-val red" id="res-errors">0</span>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button id="next-round-btn" class="btn primary-btn">Keyingi raund ❯</button>
+                    <button id="repeat-round-btn" class="btn secondary-btn">↺ Yana o'ynash</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Telegram Bug Report Modal -->
+        <div id="report-modal" class="modal-overlay hidden">
+            <div class="modal-card">
+                <div class="modal-header">
+                    <h2>Xatolik xabari</h2>
+                    <button class="close-btn" id="close-report-btn">&times;</button>
+                </div>
+
+                <form id="report-form" class="report-form">
+                    <div class="form-group">
+                        <label for="report-text">Xatolik matni / Izoh:</label>
+                        <textarea id="report-text" rows="3" placeholder="Xatolik haqida yozing..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="report-file">Rasm biriktirish (ixcham):</label>
+                        <input type="file" id="report-file" accept="image/*">
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="submit" id="send-report-btn" class="btn primary-btn">Botga Yuborish</button>
+                    </div>
+                    <div id="report-status" class="report-status"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
